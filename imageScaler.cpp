@@ -16,14 +16,14 @@
 
 
 
-#ireduced_column_dimensionlude "image.h"
+#include "image.h"
 using namespace std;
 
 
 
 /**
-*  @brief image_Downscaler is a fureduced_column_dimensiontion that reduces an image 
-*  to fit within a 1000x1000 2-Dimensional array
+*  @brief image_Downscaler is a function that reduces an image 
+*  to fit within a 100x100 2-Dimensional array
 *
 *  @param image is a 2-D array containing pixel values
 *  of a digital image
@@ -35,9 +35,9 @@ using namespace std;
 void image_Downscaler(unsigned char image[][Maximum_Number_Of_Column], int& number_of_rows, int& number_of_columns)
 {
 
-	unsigned char temp[1000][1000];	///< Temporary array to shrink image array
-	int reduced_row_dimension = (number_of_rows / 1000);		///< Reduced number of rows--dimension for pixel groups
-	int reduced_column_dimension = (number_of_columns / 1000);		///< Reduced number of columns--dimension for pixel groups
+	unsigned char temp[100][100];	///< Temporary array to shrink image array
+	int reduced_row_dimension = (number_of_rows / 100);		///< Reduced number of rows--dimension for pixel groups
+	int nc = (number_of_columns / 100);		///< Reduced number of columns--dimension for pixel groups
 	int row_counter = 0;			///< Counter for rows in temp
 	int column_counter = 0;			///< Counter for columns in temp
 	int pixel_value = 0;			///< Number values in each pixel group (to find average)
@@ -46,13 +46,13 @@ void image_Downscaler(unsigned char image[][Maximum_Number_Of_Column], int& numb
 	for(int i = 0; i < number_of_rows; i += reduced_row_dimension)
 	{
 		column_counter = 0; 	
-		for(int j = 0; j < number_of_columns; j += reduced_column_dimension)
+		for(int j = 0; j < number_of_columns; j += nc)
 		{
 			sum_of_pixels = 0;
 			pixel_value = 0;
 			for(int k = i; k < (i + reduced_row_dimension) && k < Maximum_Number_Of_Row; k++)
 			{
-				for(int l = j; l < (j + reduced_column_dimension) && l < Maximum_Number_Of_Column; l++)
+				for(int l = j; l < (j + nc) && l < Maximum_Number_Of_Column; l++)
 				{
 					sum_of_pixels += image[k][l];
 					pixel_value++;
@@ -90,7 +90,7 @@ void image_Downscaler(unsigned char image[][Maximum_Number_Of_Column], int& numb
 *
 *  @return void
 */
-void image_conversion(unsigned char image[][Maximum_Number_Of_Column],int number_of_rows, int number_of_columns, char ascii[][1000])
+void image_conversion(unsigned char image[][Maximum_Number_Of_Column],int number_of_rows, int number_of_columns, char ascii[][100])
 {
 	int max = image[0][0];	///< Variable for max value in image
 	int min = image[0][0];	///< Variable for min value in image
@@ -112,8 +112,8 @@ void image_conversion(unsigned char image[][Maximum_Number_Of_Column],int number
 		}
 	}
 
-	for(int i = 0; i < 1000; i++)
-		for(int j = 0; j < 1000; j++)
+	for(int i = 0; i < 100; i++)
+		for(int j = 0; j < 100; j++)
 			ascii[i][j] = ' ';
 	
 
@@ -163,7 +163,7 @@ void image_conversion(unsigned char image[][Maximum_Number_Of_Column],int number
 *  @param number_of_rows is the number of rows in the array
 *  @param number_of_columns is the number of columns in the array
 */
-void output_to_image(string& textFileName, char ascii[][1000], int number_of_rows, int number_of_columns)
+void output_to_image(string& textFileName, char ascii[][100], int number_of_rows, int number_of_columns)
 {
 	fstream dataFile(textFileName.c_str(), ios :: out);
 

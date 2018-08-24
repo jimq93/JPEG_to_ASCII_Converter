@@ -17,21 +17,21 @@
 
 #ifndef IMAGE_H
 #define IMAGE_H
-#define Maximum_Number_Of_Row 10000
-#define Maximum_Number_Of_Column 10000
-#ireduced_column_dimensionlude <iostream>
-#ireduced_column_dimensionlude <fstream>
-#ireduced_column_dimensionlude "jpeg.h"
+#define Maximum_Number_Of_Row 1000
+#define Maximum_Number_Of_Column 1000
+#include <iostream>
+#include <fstream>
+#include "824.jpg"
 using namespace std;
 
 
 void image_Downscaler(unsigned char image[][Maximum_Number_Of_Column], int& number_of_rows, int& number_of_columns);
 
 
-void image_conversion(unsigned char image[][Maximum_Number_Of_Column],int number_of_rows, int number_of_columns, char ascii[][1000]); 
+void image_conversion(unsigned char image[][Maximum_Number_Of_Column],int number_of_rows, int number_of_columns, char ascii[][100]); 
 
 
-void output_to_image(string& textFileName, char ascii[][1000], int number_of_rows, int number_of_columns); 
+void output_to_image(string& textFileName, char ascii[][100], int number_of_rows, int number_of_columns); 
 
 
 #endif

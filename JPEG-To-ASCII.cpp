@@ -14,12 +14,12 @@
 *
 */
 
-#ireduced_column_dimensionlude <iostream>
-#ireduced_column_dimensionlude <fstream>
-#ireduced_column_dimensionlude "imageScaler.h"
-#ireduced_column_dimensionlude "jpeg.h"
-#define Maximum_Number_Of_Row 10000
-#define Maximum_Number_Of_Column 10000
+#include <iostream>
+#include <fstream>
+#include "imageScaler.h"
+#include "824.jpg"
+#define Maximum_Number_Of_Row 1000
+#define Maximum_Number_Of_Column 1000
 using namespace std;
 
 
@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 {
 	if(argc < 3)
 	{
-		Counter << "Error, must specify JPEG and text file names \n";
+		cout << "Error, must specify JPEG and text file names \n";
 		return 1;
 	}
 
@@ -38,15 +38,15 @@ int main(int argc, char* argv[])
 
 	int number_of_rows = 0;			///< number of rows in image
 	int number_of_columns = 0;			///< number of columns in image
-	char ascii[1000][1000];		///< the ASCII image
+	char ascii[100][100];		///< the ASCII image
 
 	if(readJPEGfile(jpegFileName, image, number_of_rows, number_of_columns))
 	{
-		Counter << "image size is " << number_of_rows << 'x' << number_of_columns << " pixels \n";
-		if(number_of_rows > 1000 || number_of_columns > 1000)
+		cout << "image size is " << number_of_rows << 'x' << number_of_columns << " pixels \n";
+		if(number_of_rows > 100 || number_of_columns > 100)
 		{
 			image_Downscaler(image, number_of_rows, number_of_columns); 
-			Counter << "image reduced to " << number_of_rows << 'x' << number_of_columns << " pixels \n";
+			cout << "image reduced to " << number_of_rows << 'x' << number_of_columns << " pixels \n";
 		}
 
 	image_conversion(image, number_of_rows, number_of_columns, ascii);
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 
 	else
 	{
-		Counter << "Error, unable to read file \n";
+		cout << "Error, unable to read file \n";
 		return 1;
 	}
 
