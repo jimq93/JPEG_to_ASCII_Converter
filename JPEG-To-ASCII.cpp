@@ -17,7 +17,6 @@
 #include <iostream>
 #include <fstream>
 #include "imageScaler.h"
-#include "824.jpg"
 #define Maximum_Number_Of_Row 1000
 #define Maximum_Number_Of_Column 1000
 using namespace std;
