@@ -16,7 +16,7 @@
 
 
 
-#include "image.h"
+#include "imageScaler.h"
 using namespace std;
 
 
@@ -95,10 +95,10 @@ void image_conversion(unsigned char image[][Maximum_Number_Of_Column],int number
 	int max = image[0][0];	///< Variable for max value in image
 	int min = image[0][0];	///< Variable for min value in image
 	int width = 0;		///< Width of each range of values
-	int row_counterange1 = 0;		///< Upper bound of range 1
-	int row_counterange2 = 0;		///< Upper bound of range 2
-	int row_counterange3 = 0;		///< Upper bound of range 3
-	int row_counterange4 = 0;		///< Upper bound of range 4
+	int range1 = 0;		///< Upper bound of range 1
+	int range2 = 0;		///< Upper bound of range 2
+	int range3 = 0;		///< Upper bound of range 3
+	int range4 = 0;		///< Upper bound of range 4
 	
 
 	for(int i = 0; i < number_of_rows; i++)
